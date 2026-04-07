@@ -6,6 +6,7 @@ import EventsSection from "@/components/wedding/EventsSection";
 import VenueSection from "@/components/wedding/VenueSection";
 import GallerySection from "@/components/wedding/GallerySection";
 import FooterSection from "@/components/wedding/FooterSection";
+import MusicPlayer from "@/components/wedding/MusicPlayer";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 
 const fadeClass = (visible: boolean) =>
@@ -21,6 +22,7 @@ const Index = () => {
 
   return (
     <div className="relative overflow-x-hidden">
+      <MusicPlayer />
       <FloatingPetals />
       <HeroSection />
       <div ref={countdown.ref} className={fadeClass(countdown.visible)}>
