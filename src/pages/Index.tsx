@@ -22,6 +22,7 @@ const Index = () => {
 
   return (
     <div className="relative overflow-x-hidden">
+      <MusicPlayer />
       <FloatingPetals />
       <HeroSection />
       <div ref={countdown.ref} className={fadeClass(countdown.visible)}>
