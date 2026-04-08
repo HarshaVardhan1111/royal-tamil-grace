@@ -7,7 +7,6 @@ import EngagementSection from "@/components/wedding/EngagementSection";
 import WeddingSection from "@/components/wedding/WeddingSection";
 import VenueShowcase from "@/components/wedding/VenueShowcase";
 import PreWeddingEvents from "@/components/wedding/PreWeddingEvents";
-import GallerySection from "@/components/wedding/GallerySection";
 import FooterSection from "@/components/wedding/FooterSection";
 import MusicPlayer from "@/components/wedding/MusicPlayer";
 import OpeningScreen from "@/components/wedding/OpeningScreen";
@@ -24,7 +23,6 @@ const Index = () => {
   const wedding = useScrollFadeIn();
   const venue = useScrollFadeIn();
   const preEvents = useScrollFadeIn();
-  const gallery = useScrollFadeIn();
   const footer = useScrollFadeIn();
 
   return (
@@ -40,6 +38,9 @@ const Index = () => {
         <div ref={saveDate.ref} className={fadeClass(saveDate.visible)}>
           <SaveTheDateSection />
         </div>
+        <div ref={preEvents.ref} className={fadeClass(preEvents.visible)}>
+          <PreWeddingEvents />
+        </div>
         <div ref={engagement.ref} className={fadeClass(engagement.visible)}>
           <EngagementSection />
         </div>
@@ -48,12 +49,6 @@ const Index = () => {
         </div>
         <div ref={venue.ref} className={fadeClass(venue.visible)}>
           <VenueShowcase />
-        </div>
-        <div ref={preEvents.ref} className={fadeClass(preEvents.visible)}>
-          <PreWeddingEvents />
-        </div>
-        <div ref={gallery.ref} className={fadeClass(gallery.visible)}>
-          <GallerySection />
         </div>
         <div ref={footer.ref} className={fadeClass(footer.visible)}>
           <FooterSection />

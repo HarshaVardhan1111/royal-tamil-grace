@@ -16,7 +16,7 @@ const PreWeddingEvents = () => {
       <div className="max-w-lg mx-auto relative z-10">
         <div className="text-center mb-12">
           <p className="font-script text-gold text-3xl mb-2">✦ Celebrations ✦</p>
-          <h2 className="font-display text-3xl md:text-4xl text-maroon font-bold">Wedding Events</h2>
+          <h2 className="font-heading text-3xl md:text-4xl text-maroon font-bold tracking-wider">Wedding Events</h2>
         </div>
 
         {/* Temple scroll style timeline */}
@@ -32,14 +32,14 @@ const PreWeddingEvents = () => {
                 style={{ animationDelay: `${i * 0.15}s` }}
               >
                 {/* Timeline dot */}
-                <div className="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-ivory border-2 border-gold flex items-center justify-center text-xl group-hover:bg-gold group-hover:border-gold-dark transition-all duration-500 shadow-md">
+                <div className="relative z-10 flex-shrink-0 w-12 h-12 rounded-full bg-ivory border-2 border-gold flex items-center justify-center text-xl group-hover:bg-gold group-hover:border-gold-light transition-all duration-500 shadow-md">
                   {evt.emoji}
                 </div>
 
                 {/* Event card */}
                 <div className="flex-1 bg-ivory rounded-xl border border-gold-light p-5 shadow-sm hover:gold-glow transition-all duration-500 hover:-translate-y-0.5">
                   <div className="flex items-baseline justify-between mb-1">
-                    <h3 className="font-display text-xl text-maroon font-semibold">{evt.name}</h3>
+                    <h3 className="font-heading text-xl text-maroon font-semibold tracking-wider">{evt.name}</h3>
                     <span className="font-body text-gold text-sm uppercase tracking-widest">{evt.date}</span>
                   </div>
                   <p className="font-body text-foreground/60 text-base">{evt.desc}</p>

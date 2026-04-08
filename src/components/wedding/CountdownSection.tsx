@@ -32,7 +32,7 @@ const CountdownSection = () => {
     <section id="countdown" className="py-20 px-4 bg-ivory-dark relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         <p className="font-script text-gold text-3xl md:text-4xl mb-2">Counting down to</p>
-        <h2 className="font-display text-3xl md:text-4xl text-maroon font-bold mb-12">Our Forever</h2>
+        <h2 className="font-heading text-3xl md:text-4xl text-maroon font-bold mb-12 tracking-wider">Our Forever</h2>
 
         <div className="flex justify-center gap-4 md:gap-8 flex-wrap">
           {units.map((u) => (
