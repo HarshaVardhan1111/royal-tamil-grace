@@ -1,6 +1,4 @@
 import { useRef, useState, useCallback, useEffect } from "react";
-import couplePortrait from "@/assets/couple-portrait.jpg";
-import engagementImg from "@/assets/engagement.jpg";
 
 const SaveTheDateSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,30 +20,30 @@ const SaveTheDateSection = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Gold overlay with rangoli-inspired pattern
+    // Gold overlay
     ctx.fillStyle = "#c9a84c";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Rangoli dots pattern
+    // Rangoli dots
     ctx.fillStyle = "#d4b65a";
-    for (let x = 0; x < canvas.width; x += 24) {
-      for (let y = 0; y < canvas.height; y += 24) {
+    for (let x = 0; x < canvas.width; x += 20) {
+      for (let y = 0; y < canvas.height; y += 20) {
         ctx.beginPath();
-        ctx.arc(x, y, 2, 0, Math.PI * 2);
+        ctx.arc(x, y, 1.5, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // Diamond pattern overlay
+    // Diamond pattern
     ctx.strokeStyle = "#b8963e";
     ctx.lineWidth = 0.5;
-    for (let x = 0; x < canvas.width; x += 48) {
-      for (let y = 0; y < canvas.height; y += 48) {
+    for (let x = 0; x < canvas.width; x += 40) {
+      for (let y = 0; y < canvas.height; y += 40) {
         ctx.beginPath();
-        ctx.moveTo(x + 24, y);
-        ctx.lineTo(x + 48, y + 24);
-        ctx.lineTo(x + 24, y + 48);
-        ctx.lineTo(x, y + 24);
+        ctx.moveTo(x + 20, y);
+        ctx.lineTo(x + 40, y + 20);
+        ctx.lineTo(x + 20, y + 40);
+        ctx.lineTo(x, y + 20);
         ctx.closePath();
         ctx.stroke();
       }
@@ -53,10 +51,10 @@ const SaveTheDateSection = () => {
 
     // Center text
     ctx.fillStyle = "#fff";
-    ctx.font = "bold 18px 'Playfair Display', serif";
+    ctx.font = "bold 18px 'Cinzel', serif";
     ctx.textAlign = "center";
     ctx.fillText("✦ Scratch to Reveal ✦", canvas.width / 2, canvas.height / 2 - 10);
-    ctx.font = "14px 'Cormorant Garamond', serif";
+    ctx.font = "14px 'EB Garamond', serif";
     ctx.fillText("Swipe here gently", canvas.width / 2, canvas.height / 2 + 16);
   }, []);
 
@@ -78,14 +76,12 @@ const SaveTheDateSection = () => {
 
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(x, y, 28, 0, Math.PI * 2);
+    ctx.arc(x, y, 30, 0, Math.PI * 2);
     ctx.fill();
 
-    // Add sparkle
     sparkleId.current++;
     setSparkles((prev) => [...prev.slice(-8), { x: clientX - rect.left, y: clientY - rect.top, id: sparkleId.current }]);
 
-    // Calculate reveal %
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let transparent = 0;
     for (let i = 3; i < imageData.data.length; i += 4) {
@@ -94,7 +90,7 @@ const SaveTheDateSection = () => {
     const percent = (transparent / (imageData.data.length / 4)) * 100;
     setRevealPercent(percent);
 
-    if (percent > 55) {
+    if (percent > 50) {
       canvas.style.opacity = "0";
       canvas.style.transition = "opacity 0.8s ease-out";
     }
@@ -112,11 +108,13 @@ const SaveTheDateSection = () => {
   return (
     <section className="py-20 px-4 bg-ivory relative overflow-hidden">
       <div className="max-w-lg mx-auto text-center">
-        <p className="font-script text-gold text-3xl mb-2">✦ Mark Your Calendar ✦</p>
-        <h2 className="font-display text-3xl md:text-4xl text-maroon font-bold mb-4">
+        <p className="font-marcellus text-gold text-xl md:text-2xl mb-2 uppercase tracking-[0.3em]">
+          ✦ Mark Your Calendar ✦
+        </p>
+        <h2 className="font-heading text-3xl md:text-4xl text-maroon font-bold mb-4">
           Save the Date
         </h2>
-        <p className="font-display text-2xl text-gold font-semibold gold-text-shadow mb-8">
+        <p className="font-heading text-2xl text-gold font-semibold gold-text-shadow mb-8 tracking-widest">
           29 . 05 . 2026
         </p>
 
@@ -132,28 +130,48 @@ const SaveTheDateSection = () => {
           onTouchEnd={() => setIsScratching(false)}
           onTouchMove={handleMove}
         >
-          {/* Revealed images underneath */}
-          <div className="absolute inset-0 grid grid-rows-2">
-            <img
-              src={couplePortrait}
-              alt="Couple"
-              className="w-full h-full object-cover"
-            />
-            <img
-              src={engagementImg}
-              alt="Couple romantic"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {/* Revealed content: TEXT ONLY */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-ivory-dark">
+            {/* Decorative top arc */}
+            <svg className="absolute top-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
+              <path d="M0 30 Q50 0 100 10 Q150 0 200 30" stroke="currentColor" fill="none" strokeWidth="1" />
+            </svg>
 
-          {/* Overlay text on revealed image */}
-          <div
-            className="absolute inset-0 flex items-end justify-center pb-8 pointer-events-none transition-opacity duration-700"
-            style={{ opacity: revealPercent > 40 ? 1 : 0 }}
-          >
-            <div className="bg-ivory/80 backdrop-blur-sm px-6 py-3 rounded-full border border-gold">
-              <p className="font-script text-gold text-xl">Harshapriya</p>
-            </div>
+            {/* Kolam pattern bg */}
+            <div className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='4' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
+            }} />
+
+            <p className="font-heading text-sm uppercase tracking-[0.4em] text-gold/70 mb-6">Save the Date</p>
+
+            {/* Main name reveal */}
+            <h3
+              className="font-heading-decorative text-6xl md:text-7xl font-bold tracking-[0.15em] leading-none gold-gradient-text"
+              style={{
+                filter: "drop-shadow(0 0 20px hsl(43 72% 45% / 0.3))",
+              }}
+            >
+              SHAYA
+            </h3>
+
+            {/* Decorative line */}
+            <div className="w-24 h-px my-6" style={{
+              background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)"
+            }} />
+
+            {/* Date */}
+            <p className="font-heading text-3xl md:text-4xl text-maroon font-semibold tracking-[0.2em]">
+              29/05/26
+            </p>
+
+            <p className="font-body text-foreground/50 text-base mt-4 italic">
+              The Sacred Union
+            </p>
+
+            {/* Decorative bottom arc */}
+            <svg className="absolute bottom-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
+              <path d="M0 0 Q50 30 100 20 Q150 30 200 0" stroke="currentColor" fill="none" strokeWidth="1" />
+            </svg>
           </div>
 
           {/* Sparkle effects */}
@@ -181,7 +199,7 @@ const SaveTheDateSection = () => {
         </div>
 
         <p className="font-body text-muted-foreground mt-4 italic text-sm">
-          {revealPercent > 55 ? "✨ Revealed! We can't wait to celebrate with you" : "Scratch the golden card to reveal"}
+          {revealPercent > 50 ? "✨ Revealed! We can't wait to celebrate with you" : "Scratch the golden card to reveal"}
         </p>
       </div>
     </section>
