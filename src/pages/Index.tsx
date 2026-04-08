@@ -2,9 +2,11 @@ import { useState } from "react";
 import FloatingPetals from "@/components/wedding/FloatingPetals";
 import HeroSection from "@/components/wedding/HeroSection";
 import CountdownSection from "@/components/wedding/CountdownSection";
-import StorySection from "@/components/wedding/StorySection";
-import EventsSection from "@/components/wedding/EventsSection";
-import VenueSection from "@/components/wedding/VenueSection";
+import SaveTheDateSection from "@/components/wedding/SaveTheDateSection";
+import EngagementSection from "@/components/wedding/EngagementSection";
+import WeddingSection from "@/components/wedding/WeddingSection";
+import VenueShowcase from "@/components/wedding/VenueShowcase";
+import PreWeddingEvents from "@/components/wedding/PreWeddingEvents";
 import GallerySection from "@/components/wedding/GallerySection";
 import FooterSection from "@/components/wedding/FooterSection";
 import MusicPlayer from "@/components/wedding/MusicPlayer";
@@ -17,9 +19,11 @@ const fadeClass = (visible: boolean) =>
 const Index = () => {
   const [opened, setOpened] = useState(false);
   const countdown = useScrollFadeIn();
-  const story = useScrollFadeIn();
-  const events = useScrollFadeIn();
+  const saveDate = useScrollFadeIn();
+  const engagement = useScrollFadeIn();
+  const wedding = useScrollFadeIn();
   const venue = useScrollFadeIn();
+  const preEvents = useScrollFadeIn();
   const gallery = useScrollFadeIn();
   const footer = useScrollFadeIn();
 
@@ -33,14 +37,20 @@ const Index = () => {
         <div ref={countdown.ref} className={fadeClass(countdown.visible)}>
           <CountdownSection />
         </div>
-        <div ref={story.ref} className={fadeClass(story.visible)}>
-          <StorySection />
+        <div ref={saveDate.ref} className={fadeClass(saveDate.visible)}>
+          <SaveTheDateSection />
         </div>
-        <div ref={events.ref} className={fadeClass(events.visible)}>
-          <EventsSection />
+        <div ref={engagement.ref} className={fadeClass(engagement.visible)}>
+          <EngagementSection />
+        </div>
+        <div ref={wedding.ref} className={fadeClass(wedding.visible)}>
+          <WeddingSection />
         </div>
         <div ref={venue.ref} className={fadeClass(venue.visible)}>
-          <VenueSection />
+          <VenueShowcase />
+        </div>
+        <div ref={preEvents.ref} className={fadeClass(preEvents.visible)}>
+          <PreWeddingEvents />
         </div>
         <div ref={gallery.ref} className={fadeClass(gallery.visible)}>
           <GallerySection />
