@@ -90,7 +90,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
       <div className="relative z-10 text-center px-6">
         {/* "Wedding Invitation" */}
         <p
-          className={`font-display text-sm md:text-base uppercase tracking-[0.35em] transition-all duration-1000 ease-out ${
+          className={`font-heading text-sm md:text-base uppercase tracking-[0.35em] transition-all duration-1000 ease-out ${
             stage >= 1
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -113,7 +113,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
 
         {/* Names */}
         <h1
-          className={`font-script text-4xl sm:text-5xl md:text-7xl leading-tight transition-all duration-1000 ease-out gold-text-shadow ${
+          className={`font-heading-decorative text-4xl sm:text-5xl md:text-7xl leading-tight transition-all duration-1000 ease-out gold-text-shadow ${
             stage >= 2
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-6"
@@ -136,7 +136,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
 
         {/* Sub text */}
         <p
-          className={`font-display text-lg md:text-xl mt-4 md:mt-6 italic transition-all duration-1000 ease-out ${
+          className={`font-marcellus text-lg md:text-xl mt-4 md:mt-6 italic transition-all duration-1000 ease-out ${
             stage >= 3
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-4"
@@ -166,6 +166,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
           style={{
             border: "1.5px solid hsl(43 60% 55%)",
             color: "hsl(43 72% 40%)",
+            fontFamily: "'Cinzel', serif",
             background: "hsl(43 60% 55% / 0.08)",
             boxShadow: "0 0 20px hsl(43 60% 55% / 0.1)",
           }}
