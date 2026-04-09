@@ -20,11 +20,9 @@ const SaveTheDateSection = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Gold overlay
     ctx.fillStyle = "#c9a84c";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Rangoli dots
     ctx.fillStyle = "#d4b65a";
     for (let x = 0; x < canvas.width; x += 20) {
       for (let y = 0; y < canvas.height; y += 20) {
@@ -34,7 +32,6 @@ const SaveTheDateSection = () => {
       }
     }
 
-    // Diamond pattern
     ctx.strokeStyle = "#b8963e";
     ctx.lineWidth = 0.5;
     for (let x = 0; x < canvas.width; x += 40) {
@@ -49,7 +46,6 @@ const SaveTheDateSection = () => {
       }
     }
 
-    // Center text
     ctx.fillStyle = "#fff";
     ctx.font = "bold 18px 'Cinzel', serif";
     ctx.textAlign = "center";
@@ -130,45 +126,41 @@ const SaveTheDateSection = () => {
           onTouchEnd={() => setIsScratching(false)}
           onTouchMove={handleMove}
         >
-          {/* Revealed content: TEXT ONLY */}
+          {/* Revealed content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-ivory-dark">
-            {/* Decorative top arc */}
             <svg className="absolute top-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
               <path d="M0 30 Q50 0 100 10 Q150 0 200 30" stroke="currentColor" fill="none" strokeWidth="1" />
             </svg>
 
-            {/* Kolam pattern bg */}
             <div className="absolute inset-0 opacity-[0.04]" style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='4' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
             }} />
 
-            <p className="font-heading text-sm uppercase tracking-[0.4em] text-gold/70 mb-6">Save the Date</p>
+            <p className="font-heading text-sm uppercase tracking-[0.4em] text-gold/70 mb-4">Save the Date</p>
 
-            {/* Main name reveal */}
             <h3
               className="font-heading-decorative text-6xl md:text-7xl font-bold tracking-[0.15em] leading-none gold-gradient-text"
-              style={{
-                filter: "drop-shadow(0 0 20px hsl(43 72% 45% / 0.3))",
-              }}
+              style={{ filter: "drop-shadow(0 0 20px hsl(43 72% 45% / 0.3))" }}
             >
               SHAYA
             </h3>
 
-            {/* Decorative line */}
             <div className="w-24 h-px my-6" style={{
               background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)"
             }} />
 
-            {/* Date */}
-            <p className="font-heading text-3xl md:text-4xl text-maroon font-semibold tracking-[0.2em]">
-              29/05/26
-            </p>
+            {/* Highlighted dates */}
+            <div className="space-y-3">
+              <div className="px-6 py-2 rounded-lg bg-gold/10 border border-gold/30">
+                <p className="font-heading text-lg text-maroon font-bold tracking-wider">Engagement</p>
+                <p className="font-body text-gold font-semibold text-base">May 28, Thursday</p>
+              </div>
+              <div className="px-6 py-2 rounded-lg bg-maroon/10 border border-maroon/30">
+                <p className="font-heading text-lg text-maroon font-bold tracking-wider">Wedding</p>
+                <p className="font-body text-gold font-semibold text-base">May 29, Friday</p>
+              </div>
+            </div>
 
-            <p className="font-body text-foreground/50 text-base mt-4 italic">
-              The Sacred Union
-            </p>
-
-            {/* Decorative bottom arc */}
             <svg className="absolute bottom-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
               <path d="M0 0 Q50 30 100 20 Q150 30 200 0" stroke="currentColor" fill="none" strokeWidth="1" />
             </svg>
@@ -190,7 +182,6 @@ const SaveTheDateSection = () => {
             />
           ))}
 
-          {/* Scratch canvas */}
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
