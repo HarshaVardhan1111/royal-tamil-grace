@@ -1,3 +1,5 @@
+import engagementImg from "@/assets/engagement.jpg";
+
 const EngagementSection = () => {
   return (
     <section className="py-20 px-4 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(var(--ivory)) 0%, hsl(var(--ivory-dark)) 100%)" }}>
@@ -20,15 +22,17 @@ const EngagementSection = () => {
         <h2 className="font-heading text-3xl md:text-4xl text-maroon font-bold mb-2 tracking-wider">Engagement</h2>
         <p className="font-display text-xl text-gold font-semibold gold-text-shadow mb-8">May 28, 2026</p>
 
-        {/* Decorative ring ceremony frame */}
+        {/* Engagement image */}
+        <div className="max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden border-2 border-gold/40 gold-glow">
+          <img src={engagementImg} alt="Engagement Ceremony" className="w-full h-56 object-cover" />
+        </div>
+
         <div className="relative max-w-sm mx-auto p-8 rounded-2xl border-2 border-gold/40 bg-ivory gold-glow">
-          {/* Corner florals */}
           <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-gold rounded-tl-lg" />
           <div className="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-gold rounded-tr-lg" />
           <div className="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-gold rounded-bl-lg" />
           <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-gold rounded-br-lg" />
 
-          {/* Ring icon */}
           <div className="flex justify-center mb-4">
             <svg width="60" height="60" viewBox="0 0 60 60" className="text-gold">
               <circle cx="22" cy="30" r="12" stroke="currentColor" fill="none" strokeWidth="2" />
@@ -42,13 +46,6 @@ const EngagementSection = () => {
           <p className="font-body text-lg text-foreground/70 italic">
             "A special day marking the beginning of a lifelong bond, sealed with love and blessings"
           </p>
-
-          <div className="mt-4 flex justify-center">
-            <svg width="120" height="20" viewBox="0 0 120 20" className="text-gold opacity-50">
-              <path d="M0 10 Q30 0 60 10 Q90 20 120 10" stroke="currentColor" fill="none" strokeWidth="1" />
-              <circle cx="60" cy="10" r="2" fill="currentColor" />
-            </svg>
-          </div>
         </div>
       </div>
     </section>
