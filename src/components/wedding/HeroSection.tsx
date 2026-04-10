@@ -6,33 +6,21 @@ const HeroSection = () => {
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-2 gradient-gold" />
 
-      {/* Mughal arch corners */}
+      {/* Kolam corner patterns */}
       {["top-4 left-4", "top-4 right-4 -scale-x-100", "bottom-4 left-4 -scale-y-100", "bottom-4 right-4 -scale-x-100 -scale-y-100"].map((pos, i) => (
-        <svg key={i} className={`absolute ${pos} w-24 h-24 md:w-32 md:h-32 opacity-15`} viewBox="0 0 120 120">
-          <path d="M5 5 Q5 60 60 60 Q60 5 115 5" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.8" />
-          <path d="M10 10 Q10 50 50 50 Q50 10 90 10" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.6" />
-          <path d="M15 15 Q15 40 40 40" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.5" />
-          <circle cx="30" cy="30" r="3" fill="hsl(43,72%,45%)" opacity="0.3" />
-          <circle cx="15" cy="15" r="1.5" fill="hsl(43,72%,45%)" opacity="0.4" />
+        <svg key={i} className={`absolute ${pos} w-20 h-20 md:w-28 md:h-28 opacity-20`} viewBox="0 0 100 100">
+          <path d="M5 5 Q5 50 50 50 Q50 5 95 5" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="1" />
+          <path d="M5 15 Q15 50 50 40" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.8" />
+          <circle cx="50" cy="50" r="3" fill="hsl(43,72%,45%)" opacity="0.5" />
+          <circle cx="25" cy="25" r="2" fill="hsl(43,72%,45%)" opacity="0.4" />
         </svg>
       ))}
 
-      {/* Subtle jaali background pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage: `radial-gradient(circle, hsl(43 72% 45%) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-        }}
-      />
-
       {/* Ornamental divider top */}
       <div className="mb-4 opacity-70">
-        <svg width="220" height="24" viewBox="0 0 220 24" className="text-gold">
-          <path d="M0 12 Q55 0 110 12 Q165 24 220 12" stroke="currentColor" fill="none" strokeWidth="1.2" />
-          <path d="M30 12 Q70 4 110 12 Q150 20 190 12" stroke="currentColor" fill="none" strokeWidth="0.8" opacity="0.5" />
-          <circle cx="110" cy="12" r="3" fill="currentColor" />
-          <circle cx="60" cy="9" r="1.5" fill="currentColor" opacity="0.5" />
-          <circle cx="160" cy="15" r="1.5" fill="currentColor" opacity="0.5" />
+        <svg width="200" height="20" viewBox="0 0 200 20" className="text-gold">
+          <path d="M0 10 Q50 0 100 10 Q150 20 200 10" stroke="currentColor" fill="none" strokeWidth="1.5" />
+          <circle cx="100" cy="10" r="3" fill="currentColor" />
         </svg>
       </div>
 
@@ -40,46 +28,13 @@ const HeroSection = () => {
         Wedding Invitation
       </p>
 
-      {/* Couple portrait in palace frame */}
-      <div className="mb-6 animate-fade-in-up relative" style={{ animationDelay: "0.15s" }}>
-        {/* Palace arch frame */}
-        <div className="relative w-48 h-56 md:w-60 md:h-68 mx-auto">
-          {/* Outer gold frame */}
-          <div
-            className="absolute -inset-3 rounded-t-[70px] rounded-b-lg"
-            style={{
-              background: "linear-gradient(135deg, hsl(43 80% 35%), hsl(43 72% 50%), hsl(43 60% 65%), hsl(43 72% 50%), hsl(43 80% 35%))",
-              padding: "3px",
-            }}
-          >
-            <div className="w-full h-full rounded-t-[68px] rounded-b-lg bg-ivory" />
-          </div>
-          {/* Inner frame with image */}
-          <div
-            className="absolute -inset-1 rounded-t-[65px] rounded-b-lg overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, hsl(43 72% 40%), hsl(43 60% 55%), hsl(43 72% 40%))",
-              padding: "2px",
-            }}
-          >
-            <div className="w-full h-full rounded-t-[63px] rounded-b-lg overflow-hidden">
-              <img
-                src={couplePortrait}
-                alt="Harshavardhan & Priyadharshini"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-          </div>
-          {/* Glow */}
-          <div
-            className="absolute -inset-5 rounded-t-[75px] rounded-b-xl pointer-events-none"
-            style={{ boxShadow: "0 0 50px hsl(43 60% 55% / 0.2), 0 8px 30px hsl(0 0% 0% / 0.08)" }}
-          />
-          {/* Royal drape hints on sides */}
-          <div className="absolute -left-6 top-8 bottom-8 w-4 opacity-20 rounded-r-full"
-            style={{ background: "linear-gradient(180deg, hsl(345 55% 30% / 0.5), hsl(345 55% 30% / 0.1))" }} />
-          <div className="absolute -right-6 top-8 bottom-8 w-4 opacity-20 rounded-l-full"
-            style={{ background: "linear-gradient(180deg, hsl(345 55% 30% / 0.5), hsl(345 55% 30% / 0.1))" }} />
+      {/* Couple portrait image */}
+      <div className="mb-6 animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+        <div
+          className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold mx-auto"
+          style={{ boxShadow: "0 0 40px hsl(43 60% 55% / 0.3), 0 8px 30px hsl(0 0% 0% / 0.1)" }}
+        >
+          <img src={couplePortrait} alt="Harshavardhan & Priyadharshini" className="w-full h-full object-cover object-top" />
         </div>
       </div>
 
@@ -106,17 +61,7 @@ const HeroSection = () => {
 
       {/* Harshapriya invites you */}
       <div className="text-center mt-6 animate-fade-in-up" style={{ animationDelay: "0.65s" }}>
-        <p
-          className="text-3xl md:text-4xl"
-          style={{
-            fontFamily: "'Great Vibes', cursive",
-            background: "linear-gradient(135deg, hsl(43 80% 35%), hsl(43 72% 50%), hsl(43 60% 60%), hsl(43 72% 50%), hsl(43 80% 35%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            filter: "drop-shadow(0 0 6px hsl(43 60% 55% / 0.3))",
-          }}
-        >
+        <p className="text-3xl md:text-4xl" style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 60%, 42%)" }}>
           Harshapriya
         </p>
         <p className="text-lg md:text-xl mt-1" style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 55%, 48%)" }}>
@@ -129,7 +74,7 @@ const HeroSection = () => {
         className="font-body text-base md:text-lg text-foreground/80 text-center max-w-xl mt-4 italic animate-fade-in-up"
         style={{ animationDelay: "0.7s" }}
       >
-        "We request the honour of your presence at the wedding of Harshapriya"
+        "Together with the blessings of our families, we invite you to celebrate our wedding"
       </p>
 
       {/* Date & Venue */}
@@ -151,9 +96,9 @@ const HeroSection = () => {
 
       {/* Ornamental divider bottom */}
       <div className="mt-10 opacity-70">
-        <svg width="220" height="24" viewBox="0 0 220 24" className="text-gold">
-          <path d="M0 12 Q55 24 110 12 Q165 0 220 12" stroke="currentColor" fill="none" strokeWidth="1.2" />
-          <circle cx="110" cy="12" r="3" fill="currentColor" />
+        <svg width="200" height="20" viewBox="0 0 200 20" className="text-gold">
+          <path d="M0 10 Q50 20 100 10 Q150 0 200 10" stroke="currentColor" fill="none" strokeWidth="1.5" />
+          <circle cx="100" cy="10" r="3" fill="currentColor" />
         </svg>
       </div>
     </section>
