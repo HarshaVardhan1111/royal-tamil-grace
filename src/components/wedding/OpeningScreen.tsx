@@ -126,14 +126,24 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
         </h1>
 
         {/* Sub text */}
-        <p
-          className={`font-marcellus text-base md:text-lg mt-3 italic transition-all duration-1000 ease-out ${
+        <div
+          className={`mt-4 transition-all duration-1000 ease-out ${
             stage >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
-          style={{ color: "hsl(43, 55%, 42%)" }}
         >
-          Harshapriya
-        </p>
+          <p
+            className="text-2xl md:text-3xl"
+            style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 60%, 42%)" }}
+          >
+            Harshapriya
+          </p>
+          <p
+            className="text-base md:text-lg mt-1"
+            style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 55%, 48%)" }}
+          >
+            invites you
+          </p>
+        </div>
 
         {/* Decorative line */}
         <div

@@ -59,9 +59,19 @@ const HeroSection = () => {
         </p>
       </div>
 
+      {/* Harshapriya invites you */}
+      <div className="text-center mt-6 animate-fade-in-up" style={{ animationDelay: "0.65s" }}>
+        <p className="text-3xl md:text-4xl" style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 60%, 42%)" }}>
+          Harshapriya
+        </p>
+        <p className="text-lg md:text-xl mt-1" style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 55%, 48%)" }}>
+          invites you
+        </p>
+      </div>
+
       {/* Invitation text */}
       <p
-        className="font-body text-lg md:text-xl text-foreground/80 text-center max-w-xl mt-8 italic animate-fade-in-up"
+        className="font-body text-base md:text-lg text-foreground/80 text-center max-w-xl mt-4 italic animate-fade-in-up"
         style={{ animationDelay: "0.7s" }}
       >
         "Together with the blessings of our families, we invite you to celebrate our wedding"
