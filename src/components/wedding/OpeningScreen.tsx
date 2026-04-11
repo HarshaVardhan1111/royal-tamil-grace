@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import couplePortrait from "@/assets/couple-portrait.jpg";
+import coupleIllustration from "@/assets/couple-illustration.png";
+import thoranam from "@/assets/thoranam-left.png";
 
 const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
   const [stage, setStage] = useState(0);
@@ -27,80 +28,86 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
       }`}
       style={{
         background:
-          "radial-gradient(ellipse at center, hsl(40 33% 96%) 0%, hsl(40 25% 90%) 70%, hsl(35 30% 82%) 100%)",
+          "radial-gradient(ellipse at center, hsl(40 33% 96%) 0%, hsl(40 25% 92%) 60%, hsl(35 30% 86%) 100%)",
       }}
     >
-      {/* Vignette */}
+      {/* Subtle vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 30%, hsl(20 20% 15% / 0.18) 100%)",
+            "radial-gradient(ellipse at center, transparent 40%, hsl(20 20% 15% / 0.1) 100%)",
         }}
       />
 
-      {/* Mandala background pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.035]">
-        <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px]" viewBox="0 0 200 200">
-          {[0, 30, 60, 90, 120, 150].map((angle) => (
-            <g key={angle} transform={`rotate(${angle} 100 100)`}>
-              <ellipse cx="100" cy="30" rx="25" ry="40" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.5" />
-            </g>
-          ))}
-          <circle cx="100" cy="100" r="70" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="85" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.3" />
-          <circle cx="100" cy="100" r="95" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.2" />
+      {/* Thin elegant gold border with corner patterns */}
+      <div className="absolute inset-4 md:inset-8 pointer-events-none rounded-sm border border-[hsl(43_60%_55%_/_0.5)]">
+        {/* Corner ornaments - minimal & classy */}
+        {[
+          "top-0 left-0",
+          "top-0 right-0 -scale-x-100",
+          "bottom-0 left-0 -scale-y-100",
+          "bottom-0 right-0 -scale-x-100 -scale-y-100",
+        ].map((pos, i) => (
+          <svg
+            key={i}
+            className={`absolute ${pos} w-14 h-14 md:w-20 md:h-20`}
+            viewBox="0 0 80 80"
+          >
+            <path
+              d="M2 2 Q2 25 12 35 M2 2 Q25 2 35 12"
+              stroke="hsl(43, 60%, 55%)"
+              fill="none"
+              strokeWidth="1.2"
+              opacity="0.7"
+            />
+            <path
+              d="M5 5 Q12 18 20 22 M5 5 Q18 12 22 20"
+              stroke="hsl(43, 60%, 55%)"
+              fill="none"
+              strokeWidth="0.8"
+              opacity="0.5"
+            />
+            <circle cx="8" cy="8" r="2" fill="hsl(43, 60%, 55%)" opacity="0.6" />
+          </svg>
+        ))}
+      </div>
+
+      {/* Small traditional lamp (kuthu vilakku) at top */}
+      <div
+        className={`absolute top-8 md:top-14 left-1/2 -translate-x-1/2 transition-all duration-1000 ease-out ${
+          stage >= 1 ? "opacity-60" : "opacity-0"
+        }`}
+      >
+        <svg width="40" height="50" viewBox="0 0 40 50">
+          {/* Flame */}
+          <ellipse cx="20" cy="6" rx="4" ry="6" fill="hsl(43, 80%, 60%)" opacity="0.5" />
+          <ellipse cx="20" cy="7" rx="2" ry="4" fill="hsl(43, 90%, 70%)" opacity="0.7" />
+          {/* Lamp cup */}
+          <path d="M15 14 L12 22 L28 22 L25 14 Z" fill="hsl(43, 55%, 48%)" opacity="0.7" />
+          {/* Stem */}
+          <line x1="20" y1="22" x2="20" y2="38" stroke="hsl(43, 55%, 48%)" strokeWidth="2" opacity="0.6" />
+          {/* Base */}
+          <ellipse cx="20" cy="40" rx="10" ry="3" fill="hsl(43, 55%, 48%)" opacity="0.5" />
+          <ellipse cx="20" cy="42" rx="12" ry="3.5" fill="hsl(43, 55%, 48%)" opacity="0.4" />
+          {/* Glow */}
+          <circle cx="20" cy="6" r="8" fill="hsl(43, 80%, 65%)" opacity="0.15" />
         </svg>
       </div>
 
-      {/* Triple gold ornamental border */}
-      <div className="absolute inset-3 md:inset-6 pointer-events-none rounded-lg border border-gold-light/50">
-        <div className="absolute inset-2 rounded-lg border border-gold-light/30" />
-        <div className="absolute inset-4 rounded-lg border border-gold-light/15" />
-        {/* Ornate corner elements */}
-        {["top-0 left-0", "top-0 right-0 rotate-90", "bottom-0 right-0 rotate-180", "bottom-0 left-0 -rotate-90"].map(
-          (pos, i) => (
-            <svg
-              key={i}
-              className={`absolute ${pos} w-20 h-20 md:w-28 md:h-28 opacity-50`}
-              viewBox="0 0 100 100"
-            >
-              <path d="M5 5 Q5 30 15 40 Q5 35 5 55 M5 5 Q30 5 40 15 Q35 5 55 5" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1.5" />
-              <path d="M8 8 Q15 25 25 30 M8 8 Q25 15 30 25" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1" />
-              <path d="M5 5 Q20 20 35 35" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="0.7" />
-              <circle cx="12" cy="12" r="2.5" fill="hsl(43, 60%, 55%)" opacity="0.7" />
-              <circle cx="20" cy="8" r="1.5" fill="hsl(43, 60%, 55%)" opacity="0.4" />
-              <circle cx="8" cy="20" r="1.5" fill="hsl(43, 60%, 55%)" opacity="0.4" />
-            </svg>
-          )
-        )}
-      </div>
-
-      {/* Top brass lamp (vilakku) */}
-      <div className="absolute top-6 md:top-10 left-1/2 -translate-x-1/2 opacity-40 pointer-events-none">
-        <svg width="60" height="40" viewBox="0 0 60 40">
-          <path d="M30 5 L25 20 L35 20 Z" fill="hsl(43, 60%, 50%)" opacity="0.6" />
-          <ellipse cx="30" cy="22" rx="10" ry="3" fill="hsl(43, 60%, 50%)" opacity="0.5" />
-          <line x1="30" y1="22" x2="30" y2="35" stroke="hsl(43, 60%, 50%)" strokeWidth="2" opacity="0.5" />
-          <ellipse cx="30" cy="36" rx="12" ry="3" fill="hsl(43, 60%, 50%)" opacity="0.4" />
-          {/* Flame glow */}
-          <circle cx="30" cy="4" r="4" fill="hsl(43, 80%, 60%)" opacity="0.3" />
-        </svg>
-      </div>
-
-      {/* Floating dust particles */}
+      {/* Floating soft particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 12 }).map((_, i) => (
           <span
             key={i}
             className="absolute rounded-full"
             style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              backgroundColor: `hsl(43 60% ${50 + Math.random() * 20}% / ${0.2 + Math.random() * 0.3})`,
-              animation: `float-slow ${6 + Math.random() * 8}s ease-in-out infinite`,
+              backgroundColor: `hsl(43 60% ${55 + Math.random() * 15}% / ${0.15 + Math.random() * 0.2})`,
+              animation: `float-slow ${7 + Math.random() * 6}s ease-in-out infinite`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           />
@@ -108,10 +115,10 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6">
-        {/* "Wedding Invitation" in Playfair Display */}
+      <div className="relative z-10 text-center px-6 flex flex-col items-center">
+        {/* "WEDDING INVITATION" */}
         <p
-          className={`font-display text-sm md:text-base uppercase tracking-[0.35em] transition-all duration-1000 ease-out ${
+          className={`font-display text-xs md:text-sm uppercase tracking-[0.4em] transition-all duration-1000 ease-out mt-8 ${
             stage >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ color: "hsl(43, 60%, 45%)" }}
@@ -121,44 +128,82 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
 
         {/* Decorative line */}
         <div
-          className={`mx-auto my-4 transition-all duration-1000 ease-out delay-200 ${
-            stage >= 1 ? "opacity-100 w-24 md:w-32" : "opacity-0 w-0"
+          className={`mx-auto my-3 transition-all duration-1000 ease-out delay-200 ${
+            stage >= 1 ? "opacity-100 w-20 md:w-28" : "opacity-0 w-0"
           }`}
-          style={{ height: "1px", background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)" }}
+          style={{
+            height: "1px",
+            background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)",
+          }}
         />
 
-        {/* Couple portrait image */}
+        {/* Portrait with thoranams */}
         <div
-          className={`mx-auto mb-4 w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-gold shadow-xl transition-all duration-1000 ease-out ${
+          className={`relative flex items-center justify-center my-2 transition-all duration-1000 ease-out ${
             stage >= 2 ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
-          style={{ boxShadow: "0 0 30px hsl(43 60% 55% / 0.3)" }}
         >
-          <img src={couplePortrait} alt="Harshavardhan & Priyadharshini" className="w-full h-full object-cover object-top" />
+          {/* Left thoranam */}
+          <img
+            src={thoranam}
+            alt=""
+            className="absolute -left-14 md:-left-20 top-1/2 -translate-y-1/2 w-12 md:w-16 h-auto opacity-70"
+            style={{ filter: "drop-shadow(0 2px 4px hsl(43 50% 40% / 0.2))" }}
+          />
+
+          {/* Right thoranam (mirrored) */}
+          <img
+            src={thoranam}
+            alt=""
+            className="absolute -right-14 md:-right-20 top-1/2 -translate-y-1/2 w-12 md:w-16 h-auto opacity-70 -scale-x-100"
+            style={{ filter: "drop-shadow(0 2px 4px hsl(43 50% 40% / 0.2))" }}
+          />
+
+          {/* Portrait circle */}
+          <div
+            className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden relative"
+            style={{
+              border: "3px solid hsl(43 60% 55% / 0.6)",
+              boxShadow:
+                "0 0 25px hsl(43 60% 55% / 0.2), inset 0 0 20px hsl(43 60% 55% / 0.05)",
+            }}
+          >
+            <img
+              src={coupleIllustration}
+              alt="Harshavardhan & Priyadharshini"
+              className="w-full h-full object-cover object-top"
+              width={512}
+              height={512}
+            />
+          </div>
         </div>
 
         {/* Names */}
         <h1
-          className={`font-heading-decorative text-3xl sm:text-4xl md:text-6xl leading-tight transition-all duration-1000 ease-out gold-text-shadow ${
+          className={`font-heading-decorative text-2xl sm:text-3xl md:text-5xl leading-tight transition-all duration-1000 ease-out mt-3 ${
             stage >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{
-            background: "linear-gradient(135deg, hsl(43 80% 35%), hsl(43 72% 50%), hsl(43 60% 65%), hsl(43 72% 50%), hsl(43 80% 35%))",
+            background:
+              "linear-gradient(135deg, hsl(43 80% 35%), hsl(43 72% 50%), hsl(43 60% 60%), hsl(43 72% 50%), hsl(43 80% 35%))",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
           }}
         >
           Harshavardhan
-          <span className="block text-2xl sm:text-3xl md:text-4xl my-1" style={{ WebkitTextFillColor: "hsl(345 55% 35%)" }}>
+          <span
+            className="block text-xl sm:text-2xl md:text-3xl my-0.5"
+            style={{ WebkitTextFillColor: "hsl(345 55% 40%)" }}
+          >
             ❤️
           </span>
           Priyadharshini
         </h1>
 
-        {/* Sub text */}
+        {/* Harshapriya + cordially invites you */}
         <div
-          className={`mt-4 transition-all duration-1000 ease-out ${
+          className={`mt-3 transition-all duration-1000 ease-out ${
             stage >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -169,7 +214,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
             Harshapriya
           </p>
           <p
-            className="text-base md:text-lg mt-1"
+            className="text-base md:text-lg mt-0.5"
             style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 55%, 48%)" }}
           >
             cordially invites you
@@ -178,32 +223,36 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
 
         {/* Decorative line */}
         <div
-          className={`mx-auto my-4 transition-all duration-1000 ease-out ${
-            stage >= 3 ? "opacity-100 w-16 md:w-20" : "opacity-0 w-0"
+          className={`mx-auto my-3 transition-all duration-1000 ease-out ${
+            stage >= 3 ? "opacity-100 w-14 md:w-20" : "opacity-0 w-0"
           }`}
-          style={{ height: "1px", background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)" }}
+          style={{
+            height: "1px",
+            background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)",
+          }}
         />
 
-        {/* "Open Invitation" button in Playfair Display */}
+        {/* Open Invitation button */}
         <button
           onClick={handleOpen}
-          className={`mt-3 px-8 py-3 md:px-10 md:py-3.5 rounded-full font-display text-sm md:text-base uppercase tracking-[0.2em] transition-all duration-700 ease-out cursor-pointer
+          className={`mt-1 px-8 py-2.5 md:px-10 md:py-3 rounded-full font-display text-xs md:text-sm uppercase tracking-[0.2em] transition-all duration-700 ease-out cursor-pointer
             hover:scale-105 active:scale-100
             ${stage >= 4 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
           style={{
-            border: "1.5px solid hsl(43 60% 55%)",
+            border: "1.5px solid hsl(43 60% 55% / 0.7)",
             color: "hsl(43 72% 40%)",
             fontFamily: "'Playfair Display', serif",
-            background: "hsl(43 60% 55% / 0.08)",
-            boxShadow: "0 0 20px hsl(43 60% 55% / 0.1)",
+            background: "hsl(43 60% 55% / 0.06)",
+            boxShadow: "0 0 15px hsl(43 60% 55% / 0.08)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = "0 0 30px hsl(43 60% 55% / 0.3), 0 0 60px hsl(43 60% 55% / 0.1)";
-            e.currentTarget.style.background = "hsl(43 60% 55% / 0.15)";
+            e.currentTarget.style.boxShadow =
+              "0 0 25px hsl(43 60% 55% / 0.25), 0 0 50px hsl(43 60% 55% / 0.08)";
+            e.currentTarget.style.background = "hsl(43 60% 55% / 0.12)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = "0 0 20px hsl(43 60% 55% / 0.1)";
-            e.currentTarget.style.background = "hsl(43 60% 55% / 0.08)";
+            e.currentTarget.style.boxShadow = "0 0 15px hsl(43 60% 55% / 0.08)";
+            e.currentTarget.style.background = "hsl(43 60% 55% / 0.06)";
           }}
         >
           Open Invitation
