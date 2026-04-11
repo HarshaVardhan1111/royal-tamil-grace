@@ -35,26 +35,57 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 40%, hsl(20 20% 15% / 0.12) 100%)",
+            "radial-gradient(ellipse at center, transparent 30%, hsl(20 20% 15% / 0.18) 100%)",
         }}
       />
 
-      {/* Gold ornamental border */}
-      <div className="absolute inset-3 md:inset-8 pointer-events-none rounded-lg border border-gold-light/40">
-        <div className="absolute inset-2 rounded-lg border border-gold-light/20" />
+      {/* Mandala background pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.035]">
+        <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px]" viewBox="0 0 200 200">
+          {[0, 30, 60, 90, 120, 150].map((angle) => (
+            <g key={angle} transform={`rotate(${angle} 100 100)`}>
+              <ellipse cx="100" cy="30" rx="25" ry="40" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.5" />
+            </g>
+          ))}
+          <circle cx="100" cy="100" r="70" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="85" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.3" />
+          <circle cx="100" cy="100" r="95" stroke="hsl(43,72%,45%)" fill="none" strokeWidth="0.2" />
+        </svg>
+      </div>
+
+      {/* Triple gold ornamental border */}
+      <div className="absolute inset-3 md:inset-6 pointer-events-none rounded-lg border border-gold-light/50">
+        <div className="absolute inset-2 rounded-lg border border-gold-light/30" />
+        <div className="absolute inset-4 rounded-lg border border-gold-light/15" />
+        {/* Ornate corner elements */}
         {["top-0 left-0", "top-0 right-0 rotate-90", "bottom-0 right-0 rotate-180", "bottom-0 left-0 -rotate-90"].map(
           (pos, i) => (
             <svg
               key={i}
-              className={`absolute ${pos} w-16 h-16 md:w-24 md:h-24 opacity-40`}
+              className={`absolute ${pos} w-20 h-20 md:w-28 md:h-28 opacity-50`}
               viewBox="0 0 100 100"
             >
-              <path d="M5 5 Q5 30 15 40 Q5 35 5 50 M5 5 Q30 5 40 15 Q35 5 50 5" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1.5" />
-              <path d="M8 8 Q15 20 20 25 M8 8 Q20 15 25 20" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1" />
-              <circle cx="12" cy="12" r="2" fill="hsl(43, 60%, 55%)" opacity="0.6" />
+              <path d="M5 5 Q5 30 15 40 Q5 35 5 55 M5 5 Q30 5 40 15 Q35 5 55 5" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1.5" />
+              <path d="M8 8 Q15 25 25 30 M8 8 Q25 15 30 25" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="1" />
+              <path d="M5 5 Q20 20 35 35" stroke="hsl(43, 60%, 55%)" fill="none" strokeWidth="0.7" />
+              <circle cx="12" cy="12" r="2.5" fill="hsl(43, 60%, 55%)" opacity="0.7" />
+              <circle cx="20" cy="8" r="1.5" fill="hsl(43, 60%, 55%)" opacity="0.4" />
+              <circle cx="8" cy="20" r="1.5" fill="hsl(43, 60%, 55%)" opacity="0.4" />
             </svg>
           )
         )}
+      </div>
+
+      {/* Top brass lamp (vilakku) */}
+      <div className="absolute top-6 md:top-10 left-1/2 -translate-x-1/2 opacity-40 pointer-events-none">
+        <svg width="60" height="40" viewBox="0 0 60 40">
+          <path d="M30 5 L25 20 L35 20 Z" fill="hsl(43, 60%, 50%)" opacity="0.6" />
+          <ellipse cx="30" cy="22" rx="10" ry="3" fill="hsl(43, 60%, 50%)" opacity="0.5" />
+          <line x1="30" y1="22" x2="30" y2="35" stroke="hsl(43, 60%, 50%)" strokeWidth="2" opacity="0.5" />
+          <ellipse cx="30" cy="36" rx="12" ry="3" fill="hsl(43, 60%, 50%)" opacity="0.4" />
+          {/* Flame glow */}
+          <circle cx="30" cy="4" r="4" fill="hsl(43, 80%, 60%)" opacity="0.3" />
+        </svg>
       </div>
 
       {/* Floating dust particles */}
@@ -141,7 +172,7 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
             className="text-base md:text-lg mt-1"
             style={{ fontFamily: "'Great Vibes', cursive", color: "hsl(43, 55%, 48%)" }}
           >
-            invites you
+            cordially invites you
           </p>
         </div>
 
