@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import coupleIllustration from "@/assets/couple-illustration.png";
-import thoranam from "@/assets/thoranam-left.png";
+
 
 const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
   const [stage, setStage] = useState(0);
