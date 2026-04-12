@@ -143,22 +143,6 @@ const OpeningScreen = ({ onOpen }: { onOpen: () => void }) => {
             stage >= 2 ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
         >
-          {/* Left thoranam */}
-          <img
-            src={thoranam}
-            alt=""
-            className="absolute -left-14 md:-left-20 top-1/2 -translate-y-1/2 w-12 md:w-16 h-auto opacity-70"
-            style={{ filter: "drop-shadow(0 2px 4px hsl(43 50% 40% / 0.2))" }}
-          />
-
-          {/* Right thoranam (mirrored) */}
-          <img
-            src={thoranam}
-            alt=""
-            className="absolute -right-14 md:-right-20 top-1/2 -translate-y-1/2 w-12 md:w-16 h-auto opacity-70 -scale-x-100"
-            style={{ filter: "drop-shadow(0 2px 4px hsl(43 50% 40% / 0.2))" }}
-          />
-
           {/* Portrait circle */}
           <div
             className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden relative"
