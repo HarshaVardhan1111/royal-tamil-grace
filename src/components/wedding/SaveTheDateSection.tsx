@@ -5,8 +5,10 @@ const SaveTheDateSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isScratching, setIsScratching] = useState(false);
   const [revealPercent, setRevealPercent] = useState(0);
-  const [sparkles, setSparkles] = useState<{ x: number; y: number; id: number }[]>([]);
-  const sparkleId = useRef(0);
+  const [sparkles, setSparkles] = useState<
+    { x: number; y: number; id: number }[]
+  >([]);
+  // const sparkleId = useRef(0);
 
   const initCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -49,7 +51,11 @@ const SaveTheDateSection = () => {
     ctx.fillStyle = "#fff";
     ctx.font = "bold 18px 'Cinzel', serif";
     ctx.textAlign = "center";
-    ctx.fillText("✦ Scratch to Reveal ✦", canvas.width / 2, canvas.height / 2 - 10);
+    ctx.fillText(
+      "✦ Scratch to Reveal ✦",
+      canvas.width / 2,
+      canvas.height / 2 - 10,
+    );
     ctx.font = "14px 'EB Garamond', serif";
     ctx.fillText("Swipe here gently", canvas.width / 2, canvas.height / 2 + 16);
   }, []);
@@ -75,8 +81,11 @@ const SaveTheDateSection = () => {
     ctx.arc(x, y, 30, 0, Math.PI * 2);
     ctx.fill();
 
-    sparkleId.current++;
-    setSparkles((prev) => [...prev.slice(-8), { x: clientX - rect.left, y: clientY - rect.top, id: sparkleId.current }]);
+    // sparkleId.current++;
+    // setSparkles((prev) => [
+    //   ...prev.slice(-8),
+    //   { x: clientX - rect.left, y: clientY - rect.top, id: sparkleId.current },
+    // ]);
 
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let transparent = 0;
@@ -98,7 +107,7 @@ const SaveTheDateSection = () => {
       const point = "touches" in e ? e.touches[0] : e;
       scratch(point.clientX, point.clientY);
     },
-    [isScratching, scratch]
+    [isScratching, scratch],
   );
 
   return (
@@ -128,15 +137,28 @@ const SaveTheDateSection = () => {
         >
           {/* Revealed content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-ivory-dark">
-            <svg className="absolute top-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
-              <path d="M0 30 Q50 0 100 10 Q150 0 200 30" stroke="currentColor" fill="none" strokeWidth="1" />
+            <svg
+              className="absolute top-4 w-3/4 opacity-30 text-gold"
+              viewBox="0 0 200 30"
+            >
+              <path
+                d="M0 30 Q50 0 100 10 Q150 0 200 30"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="1"
+              />
             </svg>
 
-            <div className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='4' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
-            }} />
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='4' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
+              }}
+            />
 
-            <p className="font-heading text-sm uppercase tracking-[0.4em] text-gold/70 mb-4">Save the Date</p>
+            <p className="font-heading text-sm uppercase tracking-[0.4em] text-gold/70 mb-4">
+              Save the Date
+            </p>
 
             <h3
               className="font-heading-decorative text-6xl md:text-7xl font-bold tracking-[0.15em] leading-none gold-gradient-text"
@@ -145,24 +167,50 @@ const SaveTheDateSection = () => {
               SHAYA
             </h3>
 
-            <div className="w-24 h-px my-6" style={{
-              background: "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)"
-            }} />
+            <div
+              className="w-24 h-px my-6"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, hsl(43 60% 55%), transparent)",
+              }}
+            />
 
             {/* Highlighted dates */}
             <div className="space-y-3">
               <div className="px-6 py-2 rounded-lg bg-gold/10 border border-gold/30">
-                <p className="font-heading text-lg text-maroon font-bold tracking-wider">Engagement</p>
-                <p className="font-body text-gold font-semibold text-base">May 28, Thursday</p>
+                <p className="font-heading text-lg text-maroon font-bold tracking-wider">
+                  Engagement
+                </p>
+                <p className="font-body text-yellow-800 font-semibold text-base">
+                  May 28, Thursday
+                </p>
+                <p className="font-body text-orange-500 font-semibold text-base">
+                  6:00 pm Onwards
+                </p>
               </div>
               <div className="px-6 py-2 rounded-lg bg-maroon/10 border border-maroon/30">
-                <p className="font-heading text-lg text-maroon font-bold tracking-wider">Wedding</p>
-                <p className="font-body text-gold font-semibold text-base">May 29, Friday</p>
+                <p className="font-heading text-lg text-maroon font-bold tracking-wider">
+                  Wedding
+                </p>
+                <p className="font-body text-yellow-800 font-semibold text-base">
+                  May 29, Friday
+                </p>
+                <p className="font-body text-orange-500 font-semibold text-base">
+                  6:00 am Onwards
+                </p>
               </div>
             </div>
 
-            <svg className="absolute bottom-4 w-3/4 opacity-30 text-gold" viewBox="0 0 200 30">
-              <path d="M0 0 Q50 30 100 20 Q150 30 200 0" stroke="currentColor" fill="none" strokeWidth="1" />
+            <svg
+              className="absolute bottom-4 w-3/4 opacity-30 text-gold"
+              viewBox="0 0 200 30"
+            >
+              <path
+                d="M0 0 Q50 30 100 20 Q150 30 200 0"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="1"
+              />
             </svg>
           </div>
 
@@ -176,7 +224,8 @@ const SaveTheDateSection = () => {
                 top: s.y - 4,
                 width: 8,
                 height: 8,
-                background: "radial-gradient(circle, #ffd700 0%, transparent 70%)",
+                background:
+                  "radial-gradient(circle, #ffd700 0%, transparent 70%)",
                 borderRadius: "50%",
               }}
             />
@@ -190,7 +239,9 @@ const SaveTheDateSection = () => {
         </div>
 
         <p className="font-body text-muted-foreground mt-4 italic text-sm">
-          {revealPercent > 50 ? "✨ Revealed! We can't wait to celebrate with you" : "Scratch the golden card to reveal"}
+          {revealPercent > 50
+            ? "✨ Revealed! We can't wait to celebrate with you"
+            : "Scratch the golden card to reveal"}
         </p>
       </div>
     </section>
