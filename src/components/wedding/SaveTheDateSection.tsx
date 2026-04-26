@@ -185,7 +185,7 @@ const SaveTheDateSection = () => {
                   May 28, Thursday
                 </p>
                 <p className="font-body text-orange-500 font-semibold text-base">
-                  6:00 pm Onwards
+                  6:30 pm Onwards
                 </p>
               </div>
               <div className="px-6 py-2 rounded-lg bg-maroon/10 border border-maroon/30">
